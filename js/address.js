@@ -1,4 +1,4 @@
-function submit(tabname) {
+function submit() {
 	var name = document.getElementById("name").value;
 	var address = document.getElementById("address").value;
 
@@ -40,11 +40,11 @@ function updateBook() {
 	var res = "<table><tr><th>Name</th><th>Address</th></tr>";
 	var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
-		console.log("transaction");
+		//console.log("transaction");
 
 	  tx.executeSql('SELECT * FROM addrBook',[], function (tx,results) {
 		var len = results.rows.length;
-				console.log("length"+len);
+				//console.log("length"+len);
 
 		for(var i=0; i< len; i++) {
 			var name = results.rows.item(i).name;
@@ -55,10 +55,10 @@ function updateBook() {
 
 		}  
 	res += "</table>";	 
-	log(res);
+	//log(res);
 	var render = document.getElementById("list");
 	render.innerHTML = res;
-	log("hi"+render.innerHTML);
+	//log("hi"+render.innerHTML);
 	  });
 	});
 }
@@ -80,21 +80,6 @@ function addRow(tabname,name,address) {
 	var cell2 = row.insertCell(1);
 	cell2.innerHTML = address;
 
-	/*
-	for(var i=0; i< sessionStorage.length; i++) {
-		var key = sessionStorage.key(i);
-		var val = sessionStorage.getItem(key);
-
-		var row = table.insertRow(i);
-
-		var cell1 = row.insertCell(0);
-		cell1.innerHTML = key;
-
-		var cell1 = row.insertCell(1);
-		cell1.innerHTML = val;
-	}
-	*/
-
 	
 }
 function searchEntry(tabname) {
@@ -108,10 +93,10 @@ function searchEntry(tabname) {
 	var res = "<table><tr><th>Name</th><th>Address</th></tr>";
 	var db = openDatabase('mydb', '1.0', 'my first database', 2 * 1024 * 1024);
 	db.transaction(function (tx) {
-		console.log('search here');
+		//console.log('search here');
 	  tx.executeSql('SELECT * FROM addrBook where name = ?',[name], function (tx,results) {
 		var len = results.rows.length;
-				console.log("length"+len);
+				//console.log("length"+len);
 
 		for(var i=0; i< len; i++) {
 			var name = results.rows.item(i).name;
@@ -120,10 +105,10 @@ function searchEntry(tabname) {
 			res += "<tr> <td>"+name+"</td><td>"+address+"</td></tr>";
 		}  
 		res += "</table>";	 
-		log(res);
+		//log(res);
 		var render = document.getElementById("searchList");
 		render.innerHTML = res;
-		log("hi"+render.innerHTML);
+		//log("hi"+render.innerHTML);
 	  });
 	});
 	
@@ -137,7 +122,7 @@ function sortBook() {
 	else if(document.getElementById("sortByAddr").checked) {
 		string = "address"
 	}
-	log('sort by '+string);
+	//log('sort by '+string);
 
 	if(string != "") {
 		var res = "<table><tr><th>Name</th><th>Address</th></tr>";
@@ -158,7 +143,7 @@ function sortBook() {
 				res += "</table>";	 
 				var render = document.getElementById("list");
 				render.innerHTML = res;
-				log("table after sorting"+res);	
+				//log("table after sorting"+res);	
 			});
 		});
 		
@@ -175,32 +160,3 @@ function sortBook() {
 	function log(str){
 		console.log(str);
 }
-
-/*
-function delete(tabname) {
-	alert('here');
-	var name = document.getElementById("deleteName").value;
-	
-	if(name === "") {
-		alert('Enter name to be deleted');
-		return;
-	}
-	try {
-	var table = document.getElementById(tabname);
-	            var rowCount = table.rows.length;
-	 
-	            for(var i=0; i<rowCount; i++) {
-	                var row = table.rows[i];
-	                var chkbox = row.cells[0].childNodes[0];
-	                if(null != chkbox && true == chkbox.checked) {
-	                    table.deleteRow(i);
-	                    rowCount--;
-	                    i--;
-	                }
-				}
-	}
-	catch(e) {
-
-	}
-}
-*/
