@@ -8,69 +8,76 @@
   </head>
   <body onload='updateBook()'>
     <h>ADDRESS BOOK</h>
-    <div id="forms">
-      <div>
-          <fieldset id="person">
-          <legend>Person Data</legend>
-          <p>
-            <label>Name: &nbsp; &nbsp;</label>
-            <input type="text" id="name" placeholder="Enter a name here">
-          </p>
-          <p>
-            <label>Address:</label>
-            <input type="text" id="address" placeholder="Enter an address here">
-          </p>
-          <p>
-            <button onclick="submit('table1')">Submit</button>
-          </p>
+    <div id="upper">
+      <div id="forms">
+        <div>
+            <fieldset id="person">
+            <legend>Person Data</legend>
+            <p>
+              <label>Name: &nbsp; &nbsp;</label>
+              <input type="text" id="name" placeholder="Enter a name here">
+            </p>
+            <p>
+              <label>Address:</label>
+              <input type="text" id="address" placeholder="Enter an address here">
+            </p>
+            <p>
+              <button onclick="submit()">Submit</button>
+            </p>
+            </fieldset>
+        </div>
+
+        <div>
+          <fieldset id="query">
+            <legend>Query</legend>
+            <p>
+              <label>Search Query:</label>
+              <input type="text" id="searchName" placeholder="Enter a name here">
+              <button onclick="searchEntry()">Search</button>
+            </p>
+            <p>
+              <label>Delete Query:</label>
+              <input type="text" id="deleteName" placeholder="Enter a name here">
+              <button onclick="deleteEntry()">Delete</button>
+            </p>
           </fieldset>
-      </div>
+        </div>
+        
+        <div>
+          <fieldset id="sort">
+            <legend>Sort</legend>
+            
+              <p>
+                <input type="radio" name="sortBy" id="sortByName"> Sort By Name </input>
+              </p>
+              <p>
+                <input type="radio" name="sortBy" id="sortByAddr"> Sort By Address </input>
+              </p>
+              <p>
+                <button onclick='sortBook()'>Sort</button>
+              </p>
+          </fieldset>
+        </div>
 
-      <div>
-        <fieldset id="query">
-          <legend>Query</legend>
-          <p>
-            <label>Search Query:</label>
-            <input type="text" id="searchName" placeholder="Enter a name here">
-            <button onclick="searchEntry()">Search</button>
-          </p>
-          <p>
-            <label>Delete Query:</label>
-            <input type="text" id="deleteName" placeholder="Enter a name here">
-            <button onclick="deleteEntry()">Delete</button>
-          </p>
-        </fieldset>
       </div>
+    </div>
+
+    <div id="lower">
       
-      <div>
-        <fieldset id="sort">
-          <legend>Sort</legend>
-          
-            <p>
-              <input type="radio" name="sortBy" id="sortByName"> Sort By Name </input>
-            </p>
-            <p>
-              <input type="radio" name="sortBy" id="sortByAddr"> Sort By Address </input>
-            </p>
-            <p>
-              <button onclick='sortBook()'>Sort</button>
-            </p>
-          
-
-        </fieldset>
-      </div>
-
-    </div>
-    <div id="render">
-        <fieldset>
-          <legend>Address Book</legend>
-          <div id="list"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Search Result</legend>
-          <div id="searchList"></div>
-        </fieldset>
-    </div>
+        <div id="addrbook">
+            <fieldset>
+              <legend>Address Book</legend>
+              <div id="list"></div>
+            </fieldset>
+        </div>
+        <div id="searchresult">
+            <fieldset>
+              <legend>Search Result</legend>
+              <div id="searchList"></div>
+            </fieldset>
+        </div>
+      
+    </div>  
     
   </body>
 </html>
